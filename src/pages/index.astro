@@ -113,7 +113,7 @@ import { AdminStudio } from '../components/AdminStudio';
         if (!config) return;
         document.querySelectorAll('.data-field').forEach(el => {
           const key = el.getAttribute('data-key');
-          if (key && config[key]) el.textContent = config[key];
+          if (key && config[key] !== undefined) el.textContent = config[key] ?? '';
         });
       };
 
