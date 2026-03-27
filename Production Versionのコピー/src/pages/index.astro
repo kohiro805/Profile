@@ -1,0 +1,328 @@
+---
+import { PROFILE, SOCIAL_LINKS } from '../consts';
+import { DynamicSections } from '../components/DynamicSections';
+import { AdminStudio } from '../components/AdminStudio';
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hiroto's Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Plus+Jakarta+Sans:wght@200;400;700;800&family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <!-- Premium Dynamic Background -->
+    <div class="background-system">
+      <div class="color-mesh"></div>
+      <div class="grid-overlay"></div>
+      <div class="noise-layer"></div>
+      <div class="luminous-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+         <div class="blob blob-3"></div>
+      </div>
+    </div>
+
+    <!-- Main Experience -->
+    <main class="experience-root">
+      
+      <!-- Section 1: Hero Identity -->
+      <section class="screen-hero hero" id="home">
+        <div class="hero-inner">
+           <div class="hero-visual animate-reveal-up delay-1">
+              <div class="portrait-container">
+                <img
+                   src={`${import.meta.env.BASE_URL}images/profile.jpg`}
+                   onerror={`this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(PROFILE.nameJa)}&size=800&background=034239&color=fff'`}
+                   alt={PROFILE.nameJa}
+                   class="portrait-img data-field-img"
+                   data-key="profileImg"
+                />
+              </div>
+           </div>
+
+           <div class="identity-group">
+             <h2 class="pre-title animate-reveal data-field" data-key="title">{PROFILE.title}</h2>
+             <h1 class="main-name animate-reveal delay-1 data-field" data-key="nameJa">{PROFILE.nameJa}</h1>
+             
+             <div class="contact-hub animate-reveal delay-2">
+                <div class="bio-zone">
+                   <p class="bio-text data-field" data-key="subtitle">一都三県・名古屋エリア中心に収益不動産へ投資しています</p>
+                </div>
+
+                <div class="sns-row-flex-centered">
+                   {SOCIAL_LINKS.map(link => (
+                      <a href={link.url} target="_blank" rel="noreferrer" class="sns-node-mini" aria-label={link.service} title={link.service}>
+                           {link.icon === 'line' && (
+                             <svg viewBox="0 0 24 24" fill="currentColor" class="sns-svg-mini"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                           )}
+                           {link.icon === 'instagram' && (
+                             <svg viewBox="0 0 24 24" fill="currentColor" class="sns-svg-mini"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                           )}
+                           {link.icon === 'x' && (
+                             <svg viewBox="0 0 24 24" fill="currentColor" class="sns-svg-mini"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                           )}
+                      </a>
+                   ))}
+                </div>
+
+                <div class="direct-grid-vertical">
+                   <a href={`tel:${PROFILE.phone}`} class="hub-card-full">
+                      <span class="hub-icon-wrap">
+                         <svg viewBox="0 0 24 24" fill="#fff" class="svg-base"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                      </span>
+                      <span class="btn-text">{PROFILE.phone}</span>
+                   </a>
+                   <a href={`mailto:${PROFILE.email}`} class="hub-card-full">
+                      <span class="hub-icon-wrap">
+                         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="svg-base"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                      </span>
+                      <span class="btn-text">{PROFILE.email}</span>
+                   </a>
+                </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Dynamic Sections Flow (01, 02, 03...) -->
+      <section class="screen-split animate-on-scroll">
+         <DynamicSections client:load />
+      </section>
+
+      <footer class="footer-minimal">
+        <p>© 2026 <span class="data-field" data-key="nameJa">{PROFILE.nameJa}</span></p>
+      </footer>
+
+      <!-- Admin Studio (React + Supabase Sync) -->
+      <AdminStudio client:load />
+      <button id="open-studio-trigger" class="trigger-dot"></button>
+
+    </main>
+
+    <script>
+      import { supabase } from '../lib/supabase';
+      const STORAGE_KEY = 'kohiro_profile_config_v1';
+      
+      const updateUI = (config: any) => {
+        if (!config) return;
+        document.querySelectorAll('.data-field').forEach(el => {
+          const key = el.getAttribute('data-key');
+          if (key && config[key] !== undefined) el.textContent = config[key] ?? '';
+        });
+      };
+
+      const loadData = async () => {
+        // First, check cache for immediate display
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) updateUI(JSON.parse(saved));
+        } catch(e) {}
+
+        // Then, fetch latest from DB
+        const { data } = await supabase
+          .from('site_config')
+          .select('value')
+          .eq('key', 'global_config')
+          .single();
+
+        if (data?.value) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data.value));
+          updateUI(data.value);
+        }
+      };
+
+      // Initial load
+      loadData();
+
+      // Listen for updates from AdminStudio
+      window.addEventListener('profile-config-updated', loadData);
+
+      // Intersection Observer for core animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('reveal');
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+
+    <style is:global>
+      :root {
+        --c-brand-dark: #034239;
+        --c-brand-light: #629D87;
+        --c-primary: #034239;
+        --c-accent: #629D87;
+        --c-text: #1A1A1A;
+        --c-text-dim: #4B5563;
+        --glass: rgba(0, 0, 0, 0.03);
+        --glass-border: rgba(0, 0, 0, 0.08);
+        --accent-gradient: linear-gradient(90deg, #034239 0%, #629D87 100%);
+        --font-main: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+        --font-heading: 'Syncopate', sans-serif;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { background-color: #FFFFFF; color: var(--c-text); font-family: var(--font-main); overflow-x: hidden; }
+
+      .background-system { position: fixed; inset: 0; z-index: -10; background: #FFFFFF; }
+      .color-mesh { position: absolute; inset: 0; opacity: 0.1; background: radial-gradient(circle at 100% 100%, var(--c-brand-light) 0%, transparent 70%); }
+      .grid-overlay {
+        position: absolute; inset: 0; opacity: 0.03;
+        background-image: 
+          linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+      
+      .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.08; }
+      .blob-1 { top: -10%; left: -10%; width: 60vh; height: 60vh; background: var(--c-primary); animation: drift 20s infinite alternate; }
+      .blob-2 { bottom: -10%; right: -10%; width: 50vh; height: 50vh; background: var(--c-accent); animation: drift 15s infinite alternate-reverse; }
+      @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(100px, 50px) scale(1.1); } }
+
+      .screen-hero { min-height: 70vh; padding: 60px 20px 40px; display: flex; align-items: center; max-width: 1400px; margin: 0 auto; }
+      .screen-split { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 20px 20px; max-width: 1400px; margin: 0 auto; }
+      @media (min-width: 1024px) {
+        .screen-hero { padding: 100px 40px 60px; }
+        .screen-split { grid-template-columns: 1fr 1fr; gap: 40px; padding: 20px 40px; align-items: stretch; }
+      }
+      .glass-card { 
+        padding: 30px; 
+        background: var(--glass); 
+        border: 1px solid var(--glass-border); 
+        border-radius: 20px; 
+        backdrop-filter: blur(10px); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: auto; 
+      }
+      @media (min-width: 1024px) { 
+        .glass-card { min-height: 380px; } 
+      }
+
+      .dynamic-grid-box {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column: 1 / -1;
+        gap: 20px;
+      }
+      @media (min-width: 1024px) {
+        .dynamic-grid-box {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+      }
+
+       .hero-inner { display: flex; flex-direction: column; gap: 40px; width: 100%; align-items: center; text-align: center; }
+       @media (min-width: 1024px) {
+         .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; text-align: left; align-items: center; }
+       }
+      
+      .identity-group { display: flex; flex-direction: column; align-items: center; width: 100%; }
+      @media (min-width: 1024px) { .identity-group { align-items: flex-start; max-width: 100%; } }
+      .pre-title { font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.3em; color: var(--c-primary); margin-bottom: 12px; }
+      .main-name { font-family: var(--font-heading); font-size: clamp(28px, 5vw, 56px); line-height: 1.2; letter-spacing: -0.05em; margin-bottom: 24px; background: linear-gradient(to bottom, #1A1A1A 60%, var(--c-primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; padding-top: 5px; }
+
+      .contact-hub { display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center; }
+      @media (min-width: 1024px) { .contact-hub { align-items: flex-start; } }
+
+      .bio-zone { margin-bottom: 24px; width: 100%; }
+      .bio-text { font-size: 16px; font-weight: 500; color: var(--c-text-dim); line-height: 1.6; white-space: pre-wrap; }
+
+      .direct-grid-vertical { display: flex; flex-direction: column; gap: 20px; width: 100%; margin-top: 32px; }
+      .hub-card-full { display: flex; align-items: center; justify-content: flex-start; gap: 20px; padding: 18px 30px; background: var(--accent-gradient); border: none; border-radius: 12px; text-decoration: none; color: #fff; font-size: 14px; font-weight: 700; transition: 0.3s; box-shadow: 0 10px 20px rgba(3, 66, 57, 0.1); }
+      .hub-card-full:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(3, 66, 57, 0.2); opacity: 0.9; }
+      
+      .svg-base { width: 24px; height: 24px; display: block; flex-shrink: 0; }
+      .hub-icon-wrap { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
+
+      .sns-row-flex-centered { display: flex; gap: 20px; width: 100%; justify-content: center; margin-top: 0px; }
+      @media (min-width: 1024px) { .sns-row-flex-centered { justify-content: flex-start; } }
+      .sns-node-mini { 
+        width: 76px; height: 76px; border-radius: 50%; 
+        background: var(--accent-gradient); 
+        display: flex; align-items: center; justify-content: center; 
+        transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
+        color: #fff; text-decoration: none; -webkit-tap-highlight-color: transparent; 
+        box-shadow: 0 8px 20px rgba(3, 66, 57, 0.15); 
+      }
+      .sns-node-mini:hover { transform: scale(1.1) translateY(-4px); box-shadow: 0 12px 30px rgba(3, 66, 57, 0.3); }
+      .sns-node-mini:active { transform: scale(0.95); }
+      .sns-svg-mini { width: 36px; height: 36px; fill: #fff; }
+
+      .hero-visual { width: 100%; max-width: 320px; margin: 0 auto; }
+      @media (min-width: 1024px) { .hero-visual { max-width: 480px; margin: 0 auto; } }
+      .portrait-container { aspect-ratio: 1/1; overflow: hidden; border: 2px solid var(--c-primary); border-radius: 50%; box-shadow: 0 40px 80px rgba(0,0,0,0.15); }
+      .portrait-img { width: 100%; height: 100%; object-fit: cover; }
+
+      .section-header-mini { margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+      .section-header-mini.vertical { align-items: flex-start; }
+      .section-header-mini .number { font-family: var(--font-heading); font-size: 11px; color: var(--c-primary); margin-top: 5px; opacity: 0.7; }
+      .section-header-mini .title { font-size: 16px; font-weight: 800; letter-spacing: 0.05em; margin-bottom: 4px; color: var(--c-text); }
+      .section-header-mini .subtitle { font-size: 11px; opacity: 0.6; letter-spacing: 0.1em; color: var(--c-text); }
+
+      .bullet-list { list-style: none; }
+      .bullet-item { display: flex; gap: 16px; margin-bottom: 20px; text-align: left; }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-primary); margin-top: 8px; flex-shrink: 0; box-shadow: 0 0 10px rgba(3, 66, 57, 0.4); }
+      .asset-entry { font-size: 15px; font-weight: 500; line-height: 1.5; color: var(--c-text); }
+
+      .crit-row { display: flex; gap: 16px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0; text-align: left; }
+      .crit-row .label { width: 80px; color: var(--c-primary); font-weight: 800; font-size: 9px; padding-top: 4px; flex-shrink: 0; }
+      .crit-row .value { font-weight: 600; color: #fff; line-height: 1.5; }
+
+      .footer-minimal { padding: 40px; font-size: 11px; opacity: 0.3; text-align: center; }
+
+      .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+      .animate-on-scroll.reveal { opacity: 1; transform: translateY(0); }
+
+      /* HIGHER-END ADMIN STUDIO UI TWEAKS FOR LIGHT MODE */
+      .trigger-dot { position: fixed; bottom: 20px; right: 20px; width: 10px; height: 10px; border-radius: 50%; background: rgba(0,0,0,0.1); border: none; cursor: pointer; z-index: 9999; }
+      .trigger-dot:hover { background: var(--c-primary); box-shadow: 0 0 15px rgba(3, 66, 57, 0.3); }
+       .admin-studio-layer { position: fixed; inset: 0; z-index: 10000; background: rgba(255,255,255,0.7); backdrop-filter: blur(40px); display: flex; align-items: flex-start; justify-content: center; padding: 0; overflow: hidden; }
+       @media (min-width: 640px) { .admin-studio-layer { padding: 20px; align-items: center; } }
+
+       .admin-panel { background: #FFFFFF; border: 1px solid #EEE; width: 100%; max-width: 680px; height: 100%; border-radius: 0; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.1); }
+       @media (min-width: 640px) { .admin-panel { height: 80vh; border-radius: 32px; } }
+
+       .admin-header { padding: 20px 24px; padding-top: calc(max(20px, env(safe-area-inset-top))); border-bottom: 1px solid #EEE; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.02); }
+       @media (min-width: 640px) { .admin-header { padding: 32px 40px; } }
+      .studio-title { font-family: var(--font-heading); font-size: 16px; letter-spacing: 0.3em; margin-bottom: 4px; color: #1A1A1A; }
+      .studio-subtitle { font-size: 9px; letter-spacing: 0.15em; color: var(--c-primary); font-weight: 800; }
+      
+      .header-actions { display: flex; align-items: center; gap: 16px; }
+      .save-master { background: var(--c-primary); border: none; color: #FFF; padding: 12px 24px; border-radius: 12px; font-weight: 900; font-size: 11px; letter-spacing: 0.05em; cursor: pointer; transition: 0.3s; }
+      .save-master:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(3, 66, 57, 0.2); }
+      
+      .btn-icon { background: #F3F4F6; border: none; color: #666; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; z-index: 10; padding: 10px; }
+      .btn-icon:hover { color: #000; background: #E5E7EB; }
+      .btn-icon svg { width: 24px; height: 24px; pointer-events: none; }
+
+       .admin-content-scroller { flex: 1; overflow-y: auto; padding: 0 24px 24px; display: flex; flex-direction: column; gap: 32px; }
+       @media (min-width: 640px) { .admin-content-scroller { padding: 0 40px 40px; gap: 48px; } }
+      .admin-content-scroller::-webkit-scrollbar { width: 4px; }
+      .admin-content-scroller::-webkit-scrollbar-thumb { background: #EEE; border-radius: 10px; }
+
+      .studio-group { display: flex; flex-direction: column; gap: 24px; }
+      .group-label { font-family: var(--font-heading); font-size: 10px; color: var(--c-primary); letter-spacing: 0.3em; margin-bottom: 8px; }
+      
+      .studio-field { display: flex; flex-direction: column; gap: 8px; }
+      .studio-field label { font-size: 10px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.1em; }
+      
+      .st-input, .st-area { background: #FFF; border: 1px solid #EEE; color: #1A1A1A; padding: 16px; border-radius: 12px; font-size: 14px; font-family: inherit; width: 100%; outline: none; transition: 0.3s; }
+      .st-input:focus, .st-area:focus { border-color: var(--c-primary); background: #FAFAFA; }
+      
+      .studio-crit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      
+      .admin-footer-sub { padding: 20px 40px; border-top: 1px solid #EEE; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.02); }
+      .btn-outline { background: none; border: 1px solid #EEE; color: #999; padding: 10px 20px; border-radius: 8px; font-size: 10px; font-weight: 800; cursor: pointer; }
+      .btn-outline:hover { border-color: #ff4d4d; color: #ff4d4d; }
+      .footer-msg { font-size: 10px; color: #AAA; font-style: italic; }
+    </style>
+  </body>
+</html>
