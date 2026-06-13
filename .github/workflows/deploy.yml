@@ -27,6 +27,7 @@ jobs:
         with:
           node-version: "20"
           cache: npm
+          cache-dependency-path: "Hiroto's Prifile_v1.00/package-lock.json"
 
       - name: Setup Pages
         id: pages
@@ -34,9 +35,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: "Hiroto's Prifile_v1.00"
 
       - name: Build with Astro
         run: npm run build
+        working-directory: "Hiroto's Prifile_v1.00"
         env:
           SITE: ${{ steps.pages.outputs.origin }}
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
@@ -44,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: "Hiroto's Prifile_v1.00/dist"
 
   deploy:
     name: Deploy
